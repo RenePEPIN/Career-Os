@@ -1,0 +1,32 @@
+[
+  {
+    "id": "s1",
+    "name": "Python Fundamentals",
+    "level": 80,
+    "target_level": 100
+  },
+  {
+    "id": "s2",
+    "name": "SQL & Databases",
+    "level": 70,
+    "target_level": 100
+  },
+  {
+    "id": "s3",
+    "name": "Web Development",
+    "level": 60,
+    "target_level": 100
+  },
+  {
+    "id": "s4",
+    "name": "Machine Learning",
+    "level": 40,
+    "target_level": 100
+  },
+  {
+    "id": "s5",
+    "name": "Generative AI & LLM",
+    "level": 30,
+    "target_level": 100
+  }
+]

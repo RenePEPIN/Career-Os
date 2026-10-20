@@ -1,0 +1,27 @@
+[
+  {
+    "id": "g1",
+    "title": "CV mis à jour",
+    "status": "completed"
+  },
+  {
+    "id": "g2",
+    "title": "RDV CEP",
+    "status": "completed"
+  },
+  {
+    "id": "g3",
+    "title": "Dossier PTP",
+    "status": "in_progress"
+  },
+  {
+    "id": "g4",
+    "title": "Réponse Transitions Pro",
+    "status": "pending"
+  },
+  {
+    "id": "g5",
+    "title": "Début formation AI Engineer",
+    "status": "pending"
+  }
+]

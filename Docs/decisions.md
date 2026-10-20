@@ -1,185 +1,61 @@
+# Décisions
 
-# Décisions Architecture
-
-Ce document recense les principales décisions prises pour le projet Career OS.
-
-L'objectif est de garder une trace des choix réalisés et de leur justification afin d'éviter les hésitations ou les changements inutiles en cours de développement.
+Trace des choix figés. Éviter de changer sans raison écrite ici.
 
 ---
 
-# 20/10/2026
+## 2026-10-20 — Projet Career OS
 
-## Création du projet Career OS
-
-### Décision
-
-Créer une application personnelle permettant de suivre :
-
-- mes objectifs ;
-- mes compétences ;
-- mes formations ;
-- mes projets ;
-- mes candidatures ;
-- ma progression vers le métier d'AI Engineer.
-
-### Motivation
-
-J'ai besoin de visualiser les choses pour les comprendre et les piloter.
-
-Career OS doit devenir mon tableau de bord personnel de carrière.
+Application personnelle : goals, skills, progression vers AI Engineer. Un utilisateur.
 
 ---
 
-# 20/10/2026
+## 2026-10-20 — Streamlit
 
-## Utilisation de Streamlit
-
-### Décision
-
-Construire l'interface avec Streamlit.
-
-### Motivation
-
-Je souhaite me concentrer sur :
-
-- Python ;
-- la logique métier ;
-- l'architecture ;
-- les bases de données.
-
-Je connais déjà React mais ce projet n'a pas pour objectif de progresser en frontend.
-
-Streamlit permet de créer rapidement des interfaces visuelles et fonctionnelles.
-
-### Réévaluation
-
-Le choix pourra être revu plus tard si le projet devient une véritable application multi-utilisateur.
+UI en Streamlit pour aller vite en Python. Pas d’objectif frontend React sur ce projet. Réévaluable si multi-utilisateur un jour.
 
 ---
 
-# 20/10/2026
+## 2026-10-20 — IA en dernier
 
-## Architecture Feature First
-
-### Décision
-
-Organiser le projet par fonctionnalités.
-
-### Exemple
-
-```text
-goals
-skills
-projects
-documents
-journal
-```
-
-### Motivation
-
-Cette organisation est plus simple à comprendre et à maintenir qu'une séparation par couches techniques.
+Pas d’assistant IA / RAG tant que données + usage quotidien ne sont pas stables.
 
 ---
 
-# 20/10/2026
+## 2026-10-20 — Docs dans le dépôt
 
-## Développement progressif
-
-### Décision
-
-Développer les fonctionnalités une par une.
-
-### Ordre
-
-1. Dashboard
-2. Goals
-3. Skills
-4. Projects
-5. Journal
-6. Documents
-7. IA
-
-### Motivation
-
-Terminer chaque module avant de passer au suivant.
-
-Éviter l'accumulation de fonctionnalités incomplètes.
+Le dépôt Git est la source officielle (pas Notion / OneNote dispersés).
 
 ---
 
-# 20/10/2026
+## 2026-10-20 — Simplification MVP (alignement code / docs)
 
-## IA en dernier
+**Problème** : docs décrivaient Feature First + service/repository + PostgreSQL + FastAPI + 10 versions, alors que le code est un seul fichier Streamlit hardcodé.
 
-### Décision
+**Décision** :
 
-Ne pas intégrer d'intelligence artificielle immédiatement.
-
-### Motivation
-
-Une bonne application repose d'abord sur :
-
-- une architecture claire ;
-- des données fiables ;
-- une logique métier solide.
-
-L'IA viendra enrichir l'application lorsque les fondations seront stables.
+- MVP = Streamlit + JSON + Dashboard / Goals / Skills
+- Pas de couches service/repository tant que la logique tient dans les pages
+- Postgres, API, auth, documents, RAG = reportés, conditionnés à un besoin réel
+- Roadmap réduite à des étapes conditionnelles, pas une V1–V10 figée
 
 ---
 
-# 20/10/2026
+## 2026-10-20 — Mentor Cursor
 
-## PostgreSQL comme base cible
-
-### Décision
-
-Utiliser PostgreSQL à terme.
-
-### Motivation
-
-Acquérir une expérience proche des environnements professionnels.
-
-### Phase de démarrage
-
-Les premières versions pourront utiliser :
-
-- JSON
-- SQLite
-
-afin d'accélérer le développement.
+Règle `.cursor/rules/mentor-mvp.mdc` : une tâche à la fois, pas de code complet à la place de l’utilisateur, anti sur-engineering.
 
 ---
 
-# 20/10/2026
+## 2026-10-20 — Cohérence avant code UI
 
-## Documentation dans le dépôt
+**Décision** : UI hardcodée + JSON seed = état de départ validé (pas une dette cachée).  
+Docs, guide, archi et roadmap décrivent cet état. Checklist : `Docs/coherence.md`.
 
-### Décision
-
-Conserver toute la documentation dans le projet.
-
-### Motivation
-
-Éviter d'avoir :
-
-- des notes dans OneNote ;
-- des notes dans Obsidian ;
-- des notes dans Notion ;
-- des informations dispersées.
-
-Le dépôt Git devient la source officielle du projet.
+**Décision** : pas de split `dashboard.py` / `goals.py` / `skills.py` tant que `main.py` reste lisible.
 
 ---
 
-# Principe directeur
+## Principe
 
-Construire Career OS comme un projet BIM :
-
-1. Comprendre le besoin.
-2. Dessiner la solution.
-3. Structurer les données.
-4. Développer.
-5. Améliorer.
-
-Ne jamais construire sans vision d'ensemble.
-
+Concevoir avant d’étendre. Construire petit. Documenter l’état réel, pas l’état rêvé.
